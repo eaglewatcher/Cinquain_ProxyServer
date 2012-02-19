@@ -2193,6 +2193,7 @@ nfsd4_encode_fattr(struct svc_fh *fhp, struct svc_export *exp,
 	}
 
 	err = vfs_getattr(exp->ex_path.mnt, dentry, &stat);
+	//eagle:replace getattr fucntion
 	if (err)
 		goto out_nfserr;
 	if ((bmval0 & (FATTR4_WORD0_FILES_FREE | FATTR4_WORD0_FILES_TOTAL |
@@ -3126,6 +3127,7 @@ nfsd4_encode_read(struct nfsd4_compoundres *resp, __be32 nfserr,
 	nfserr = nfsd_read_file(read->rd_rqstp, read->rd_fhp, read->rd_filp,
 			read->rd_offset, resp->rqstp->rq_vec, read->rd_vlen,
 			&maxcount);
+	//eagle:replace this read function
 
 	if (nfserr)
 		return nfserr;

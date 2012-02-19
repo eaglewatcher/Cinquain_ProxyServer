@@ -802,6 +802,7 @@ nfsd_open(struct svc_rqst *rqstp, struct svc_fh *fhp, umode_t type,
 	}
 	*filp = dentry_open(dget(dentry), mntget(fhp->fh_export->ex_path.mnt),
 			    flags, current_cred());
+	//eagle:replace this open function
 	if (IS_ERR(*filp))
 		host_err = PTR_ERR(*filp);
 	else
@@ -1494,6 +1495,7 @@ do_nfsd_create(struct svc_rqst *rqstp, struct svc_fh *fhp,
 	}
 
 	host_err = vfs_create(dirp, dchild, iap->ia_mode, NULL);
+	//eagle:replace this create function
 	if (host_err < 0) {
 		fh_drop_write(fhp);
 		goto out_nfserr;
